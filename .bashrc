@@ -63,6 +63,13 @@ else
 fi
 unset color_prompt force_color_prompt
 
+
+
+. ~/.bashrc.d/git-completion.bash
+. ~/.bashrc.d/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1='\w$(__git_ps1 " (%s)")\$ '
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
