@@ -2,6 +2,14 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+function colored(){
+    python3 ~/.bashrc.d/color.py $1 $2
+}
+
+function gitcoloring(){
+    python3 ~/.bashrc.d/gitcolor.py $1
+}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -69,7 +77,15 @@ unset color_prompt force_color_prompt
 . ~/.bashrc.d/zellij-completion.bash
 . ~/.bashrc.d/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\w$(__git_ps1 " (%s)")\$ '
+
+GIT_PS1_SHOWDIRTYSTATE=true      # *:unstaged, +:staged
+GIT_PS1_SHOWUNTRACKEDFILES=true  # %:untracked
+GIT_PS1_SHOWSTASHSTATE=true      # $:stashed
+GIT_PS1_SHOWUPSTREAM=auto        # >:ahead, <:behind =: equal
+GIT_PS1_STATESEPARATOR=':'
+
+# gitsection=$(__git_ps1 " (%s)")
+export PS1='$(colored "\w" On_IPurple)$(gitcoloring $(__git_ps1 " (%s)"))\$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
