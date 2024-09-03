@@ -1,5 +1,6 @@
 _dummy()
 {
+  # zellij-completion-helper.py
   local cur prev cword
   _get_comp_words_by_ref -n : cur prev cword
   complist=$(zellij ls -n | awk '{print $1}')

@@ -1,8 +1,6 @@
-import sys
 import argparse
-import pprint
 
-def func(cur:str, prev:str, cword:str, *candidate:list[str]) -> str:
+def zellij_compl(cur:str, prev:str, cword:str, *candidate:list[str]) -> str:
     """
     # func
 
@@ -21,6 +19,8 @@ def func(cur:str, prev:str, cword:str, *candidate:list[str]) -> str:
         for i in candidate_list:
             if i.startswith(cur):
                 rlist.append(i)
+    if len(rlist) != 1:
+        rlist = []
     return ' '.join(rlist)
 
 def main():
@@ -35,7 +35,7 @@ def main():
     args = parser.parse_args()
  
  
-    print(func(
+    print(zellij_compl(
         "" if args.cur is None else args.cur,
         args.prev,
         args.cword,
