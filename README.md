@@ -10,3 +10,7 @@ run following command (you must change `/path/to/the/dotfiles/` path)
 ln -s /path/to/the/dotfiles/.bashrc ~/.bashrc
 ln -s /path/to/the/dotfiles/.bashrc.d ~/.bashrc.d
 ```
+
+## feature
+
+- zellij completion
