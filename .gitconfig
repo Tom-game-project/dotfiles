@@ -5,4 +5,5 @@
         graph = log --decorate --graph --all --name-status
         st = status
 [credential]
+        # git config --global credential.helper 'cache --timeout=10800'
         helper = cache --timeout=10800
