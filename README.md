@@ -13,4 +13,6 @@ ln -s /path/to/the/dotfiles/.bashrc.d ~/.bashrc.d
 
 ## feature
 
+### .bashrc
+
 - zellij completion

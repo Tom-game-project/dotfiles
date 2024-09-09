@@ -38,4 +38,3 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 alias ls='eza'
 
 . "$HOME/.cargo/env"
-source $HOME/.cargo/env
