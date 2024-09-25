@@ -10,6 +10,10 @@ function gitcoloring(){
     python3 ~/.bashrc.d/gitcolor.py $1
 }
 
+function count_files(){
+    find . -name "*.$1" -type f | xargs wc -l | tail -n 1
+}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -115,6 +119,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias count_files='count_files'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
