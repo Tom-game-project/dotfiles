@@ -10,6 +10,10 @@ function gitcoloring(){
     python3 ~/.bashrc.d/gitcolor.py $1
 }
 
+function count_files(){
+    find . -name "*.$1" -type f | xargs wc -l | tail -n 1
+}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -71,8 +75,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-
-
 . ~/.bashrc.d/git-completion.bash
 . ~/.bashrc.d/zellij-completion.bash
 . ~/.bashrc.d/git-prompt.sh
@@ -115,6 +117,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias count_files='count_files'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -144,3 +147,5 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="~/Project/software/wabt/build:$PATH" # wabt support
+export NODE_OPTIONS=" --dns-result-order=ipv4first "
