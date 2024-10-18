@@ -75,8 +75,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-
-
 . ~/.bashrc.d/git-completion.bash
 . ~/.bashrc.d/zellij-completion.bash
 . ~/.bashrc.d/git-prompt.sh
@@ -145,3 +143,5 @@ if ! shopt -oq posix; then
   fi
 fi
 . "$HOME/.cargo/env"
+export PATH="~/Project/software/wabt/build:$PATH" # wabt support
+export NODE_OPTIONS=" --dns-result-order=ipv4first "
