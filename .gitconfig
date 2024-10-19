@@ -6,3 +6,7 @@
 	st = status
 [credential]
 	helper = cache --timeout=10800
+[core]
+	editor = vim
+[sequence]
+	editor = vim
