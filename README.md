@@ -13,10 +13,17 @@ ln -s /path/to/the/dotfiles/.bashrc.d ~/.bashrc.d
 
 ## setting zellij
 
+for wayland
+
 run following command
 ```bash
 zellij setup --dump-config > config.kdl
 patch -u config.kdl zellij_config.patch
+```
+
+and you have to install cli tool for copy and paste 
+```bash
+sudo apt install wl-clipboard
 ```
 
 ## feature
