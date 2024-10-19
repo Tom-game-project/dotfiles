@@ -87,7 +87,7 @@ GIT_PS1_SHOWUPSTREAM=auto        # >:ahead, <:behind =: equal
 GIT_PS1_STATESEPARATOR=':'
 
 # gitsection=$(__git_ps1 " (%s)")
-export PS1='$(colored "\w" On_IPurple)$(gitcoloring $(__git_ps1 " (%s)"))\$ '
+export PS1='$(colored "\w" On_IPurple)\n$(gitcoloring $(__git_ps1 " (%s)"))\$❱ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
