@@ -11,6 +11,14 @@ ln -s /path/to/the/dotfiles/.bashrc ~/.bashrc
 ln -s /path/to/the/dotfiles/.bashrc.d ~/.bashrc.d
 ```
 
+## setting zellij
+
+run following command
+```bash
+zellij setup --dump-config > config.kdl
+patch -u config.kdl zellij_config.patch
+```
+
 ## feature
 
 ### .bashrc
