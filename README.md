@@ -28,7 +28,16 @@ and you have to install cli tool for copy and paste
 sudo apt install wl-clipboard
 ```
 
-## ls essential
+## setting `.vimrc`
+
+links
+  - https://github.com/mattn/vim-lsp-settings?tab=readme-ov-file
+  - https://github.com/prabirshrestha/vim-lsp
+  - https://github.com/junegunn/vim-plug?tab=readme-ov-file
+  - https://github.com/fannheyward/coc-rust-analyzer
+
+
+## convenient ls
 ```
 ls --git -la --tree --git-ignore --no-permissions --no-user --no-time
 ```
