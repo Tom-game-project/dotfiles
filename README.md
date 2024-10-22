@@ -21,9 +21,16 @@ zellij setup --dump-config > config.kdl
 patch -u config.kdl zellij_config.patch
 ```
 
+- room.wasm setting
+
 and you have to install cli tool for copy and paste 
 ```bash
 sudo apt install wl-clipboard
+```
+
+## ls essential
+```
+ls --git -la --tree --git-ignore --no-permissions --no-user --no-time
 ```
 
 ## feature
