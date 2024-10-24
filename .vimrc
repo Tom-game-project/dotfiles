@@ -21,3 +21,4 @@ inoremap <silent><expr> <Enter> coc#pum#visible() ? coc#pum#confirm() : "\<Enter
 inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "\<Esc>"
 inoremap <silent><expr> <C-h> coc#pum#visible() ? coc#pum#cancel() : "\<C-h>"
 
+command Clip call system('wl-copy', @0)
