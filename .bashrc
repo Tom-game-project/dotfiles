@@ -116,7 +116,8 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls --git -la --tree --git-ignore --no-permissions --no-user --no-time'
+
 alias count_files='count_files'
 
 # Add an "alert" alias for long running commands.  Use like so:
