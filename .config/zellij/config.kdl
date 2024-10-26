@@ -267,26 +267,83 @@ plugins {
 // For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 //
-// themes {
-//     dracula {
-//         fg 248 248 242
-//         bg 40 42 54
-//         red 255 85 85
-//         green 80 250 123
-//         yellow 241 250 140
-//         blue 98 114 164
-//         magenta 255 121 198
-//         orange 255 184 108
-//         cyan 139 233 253
-//         black 0 0 0
-//         white 255 255 255
-//     }
-// }
+themes {
+    dracula {
+        fg 248 248 242
+        bg 40 42 54
+        red 255 85 85
+        green 80 250 123
+        yellow 241 250 140
+        blue 98 114 164
+        magenta 255 121 198
+        orange 255 184 108
+        cyan 139 233 253
+        black 0 0 0
+        white 255 255 255
+    }
+
+    ayu_mirage {
+        fg "#CCCAC2"
+        bg "#1F2430"
+        black "#1A1F29"
+        red "#F28779"
+        green "#D5FF80"
+        yellow "#FFCC77"
+        blue "#73D0FF"
+        magenta "#DFBFFF"
+        cyan "#444B55"
+        white "#C7C7C7"
+        orange "#FFAD66"
+    }
+
+    ayu_light {
+	fg "#5C6166"
+	bg "#FAFAFA"
+	black "#E7EAED"
+	red "#F07171"
+	green "#86B300"
+	yellow "#FFAA33"
+	blue "#399EE6"
+	magenta "#A37ACC"
+	cyan "#478ACC"
+	white "#FCFCFC"
+	orange "#FA8D3E"
+    }
+
+    ayu_dark {
+	fg "#BFBDB6"
+	bg "#0F1419"
+	black "#131721"
+	red "#F07178"
+	green "#AAD94C"
+	yellow "#E6B450"
+	blue "#59C2FF"
+	magenta "#D2A6FF"
+	cyan "#73B8FF"
+	white "#CCCAC2"
+	orange "#FF8F40"
+    }
+
+    tokyo-night {
+        fg 169 177 214
+        bg 26 27 38
+        black 56 62 90
+        red 249 51 87
+        green 158 206 106
+        yellow 224 175 104
+        blue 122 162 247
+        magenta 187 154 247
+        cyan 42 195 222
+        white 192 202 245
+        orange 255 158 100
+    }
+}
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
 // theme "default"
+theme "ayu_mirage"
 
 // The name of the default layout to load on startup
 // Default: "default"
