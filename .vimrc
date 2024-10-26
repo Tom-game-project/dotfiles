@@ -2,15 +2,18 @@ set number
 syntax on
 set smartindent
 
+" coc lsp manager
 
+" vim-plug
+" https://github.com/junegunn/vim-plug?tab=readme-ov-file
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 
