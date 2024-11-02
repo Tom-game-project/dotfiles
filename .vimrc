@@ -1,6 +1,7 @@
 set number
 syntax on
 set smartindent
+set cursorline
 
 " coc lsp manager
 
