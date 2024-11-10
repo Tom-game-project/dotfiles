@@ -3,6 +3,8 @@ syntax on
 set smartindent
 set cursorline
 set hlsearch
+set incsearch
+set laststatus=2
 
 " coc lsp manager
 
@@ -39,6 +41,10 @@ nmap <silent> <space>rf <Plug>(coc-references)
 nmap <silent> <space>rn <Plug>(coc-rename)
 "スペースfmtでFormat
 nmap <silent> <space>fmt <Plug>(coc-format)
+
+" definition jump
+nmap <silent> <space>dfs :sp<CR><Plug>(coc-definition)
+nmap <silent> <space>dfv :vs<CR><Plug>(coc-definition)
 
 nmap <space>e <Cmd>CocCommand explorer<CR>
 
@@ -96,8 +102,5 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 " List all presets
 nmap <space>el <Cmd>CocList explPresets<CR>
 
-
-nmap <silent> <space>dfs :sp<CR><Plug>(coc-definition)
-nmap <silent> <space>dfv :vs<CR><Plug>(coc-definition)
 
 command Clip call system('wl-copy', @0)
