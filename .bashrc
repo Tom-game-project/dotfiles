@@ -87,7 +87,24 @@ GIT_PS1_SHOWUPSTREAM=auto        # >:ahead, <:behind =: equal
 GIT_PS1_STATESEPARATOR=':'
 
 # gitsection=$(__git_ps1 " (%s)")
-export PS1='$(colored "\w" On_IPurple)\n$(gitcoloring $(__git_ps1 " (%s)"))\$❱ '
+
+# 正常終了とエラー終了に応じて色付きシンボルを設定する関数
+function check_exit_status() {
+  if [ "$?" -eq '0' ]; then
+    # 正常終了時（緑色）
+    export EXIT_SYMBOL=$(colored "✔" Green)
+  else
+    # エラー終了時（赤色）
+    export EXIT_SYMBOL=$(colored "✘" Red)
+  fi
+}
+
+# プロンプトが描画される前に check_exit_status を呼び出す
+export PROMPT_COMMAND="check_exit_status"
+
+# PS1の設定で EXIT_SYMBOL を使う
+export PS1='$(colored "\w" On_IPurple)\n$EXIT_SYMBOL $(gitcoloring $(__git_ps1 " (%s)"))\$❱ '
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -95,10 +112,7 @@ xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
-    ;;
-esac
-
-# enable color support of ls and also add handy aliases
+    ;; esac # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='eza --color=auto' # https://eza.rocks/
