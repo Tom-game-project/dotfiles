@@ -90,12 +90,14 @@ GIT_PS1_STATESEPARATOR=':'
 
 # 正常終了とエラー終了に応じて色付きシンボルを設定する関数
 function check_exit_status() {
-  if [ "$?" -eq '0' ]; then
+  ERROR_CODE=$?
+  if [ "$ERROR_CODE" -eq '0' ]; then
     # 正常終了時（緑色）
     export EXIT_SYMBOL=$(colored "✔" Green)
   else
     # エラー終了時（赤色）
     export EXIT_SYMBOL=$(colored "✘" Red)
+    EXIT_SYMBOL="$EXIT_SYMBOL $(colored "$ERROR_CODE" Red)"
   fi
 }
 
