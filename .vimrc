@@ -4,6 +4,7 @@ set smartindent
 set cursorline
 set hlsearch
 set incsearch
+set smartcase
 set laststatus=2
 
 " coc lsp manager
