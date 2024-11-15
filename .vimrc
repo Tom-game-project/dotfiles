@@ -133,4 +133,25 @@ vnoremap <leader>{ :s/\%V\(.*\)/{\1}/<CR>
 " 選択範囲を [] で囲む
 vnoremap <leader>[ :s/\%V\(.*\)/[\1]/<CR>
 
+" coc.nvim で Tab を補完決定に使う設定
+inoremap <silent><expr> <Tab>
+  \ pumvisible() ? "\<C-n>" :
+  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" :
+  \ CheckBackspace() ? "\<Tab>" :
+  \ coc#refresh()
+
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap { {}<LEFT>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<LEFT>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap [ []<LEFT>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+
 command Clip call system('wl-copy', @0)
