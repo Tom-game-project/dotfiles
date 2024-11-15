@@ -126,4 +126,11 @@ nmap <space>eb <Cmd>CocCommand explorer --preset buffer<CR>
 nmap <space>el <Cmd>CocList explPresets<CR>
 
 
+" 選択範囲を () で囲む
+vnoremap <leader>( :s/\%V\(.*\)/(\1)/<CR>
+" 選択範囲を {} で囲む
+vnoremap <leader>{ :s/\%V\(.*\)/{\1}/<CR>
+" 選択範囲を [] で囲む
+vnoremap <leader>[ :s/\%V\(.*\)/[\1]/<CR>
+
 command Clip call system('wl-copy', @0)
