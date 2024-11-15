@@ -7,6 +7,22 @@ set incsearch
 set smartcase
 set laststatus=2
 
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+set encoding=utf-8
+
+" フォルダアイコンを表示
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
+
+" 個人的に好きなカラースキーム
+colorscheme wildcharm
+
+let showmarks_enable = 1
 " coc lsp manager
 
 " vim-plug
@@ -19,6 +35,12 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'airblade/vim-gitgutter'
+" https://github.com/kshenoy/vim-signature
+Plug 'kshenoy/vim-signature'
+
+" icon
+" some settings needed
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
