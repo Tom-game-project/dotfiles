@@ -71,6 +71,9 @@ nmap <silent> <space>dfv :vs<CR><Plug>(coc-definition)
 
 nmap <space>e <Cmd>CocCommand explorer<CR>
 
+" エクスプローラを開く速度の改善 
+nmap <space>q <Cmd>CocCommand explorer<CR>
+
 let g:coc_explorer_global_presets = {
 \   '.vim': {
 \     'root-uri': '~/.vim',
