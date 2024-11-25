@@ -4,9 +4,18 @@
 [alias]
 	graph = log --decorate --graph --all --name-status
 	st = status
+	graph-short = log --graph --all --pretty=format:\"%C(auto)%h %d %s %C(dim white)%an\"
 [credential]
 	helper = cache --timeout=10800
 [core]
+	pager = delta
 	editor = vim
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+[merge]
+	conflictStyle = zdiff3
 [sequence]
 	editor = vim
