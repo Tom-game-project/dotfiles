@@ -18,6 +18,23 @@ if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
 
+" 縦区切り線をシンプルに
+set fillchars+=vert:│
+
+" 横区切り線をシンプルに
+" set statusline=─
+set fillchars+=stl:─,stlnc:─
+
+" 区切り線のハイライトを抑え気味に
+highlight! link StatusLine Comment
+highlight! link StatusLineNC Comment
+if has('nvim')
+  highlight! link WinSeparator Comment
+else
+  highlight! link VertSplit Comment
+endif
+
+
 
 " 個人的に好きなカラースキーム
 colorscheme wildcharm
@@ -130,11 +147,17 @@ nmap <space>el <Cmd>CocList explPresets<CR>
 
 
 " 選択範囲を () で囲む
-vnoremap <leader>( :s/\%V\(.*\)/(\1)/<CR>
+"vnoremap <leader>( :s/\%V\(.*\)/(\1)/<CR>
 " 選択範囲を {} で囲む
-vnoremap <leader>{ :s/\%V\(.*\)/{\1}/<CR>
+"ivnoremap <leader>{ :s/\%V\(.*\)/{\1}/<CR>
 " 選択範囲を [] で囲む
-vnoremap <leader>[ :s/\%V\(.*\)/[\1]/<CR>
+"vnoremap <leader>[ :s/\%V\(.*\)/[\1]/<CR>
+
+" ジャンプリストを後退する
+nnoremap <leader>[ <C-o>
+" ジャンプリストを前進する
+nnoremap <leader>] <C-i>
+
 
 " coc.nvim で Tab を補完決定に使う設定
 inoremap <silent><expr> <Tab>
@@ -150,11 +173,26 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap { {}<LEFT>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<LEFT>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap [ []<LEFT>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
+" inoremap { {}<LEFT>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o>
+" inoremap ( ()<LEFT>
+" inoremap (<Enter> ()<Left><CR><ESC><S-o>
+" inoremap [ []<LEFT>
+" inoremap [<Enter> []<Left><CR><ESC><S-o>
+
+
+" カーソルの設定
+if has('vim_starting')
+    " 挿入モード時に非点滅の縦棒タイプのカーソル
+    let &t_SI .= "\e[6 q"
+    " ノーマルモード時に非点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[2 q"
+    " 置換モード時に非点滅の下線タイプのカーソル
+    let &t_SR .= "\e[4 q"
+endif
+" highlight Cursor guifg=NONE guibg=#808080 ctermbg=NONE
+" hi Cursor guifg=NONE guibg=NONE gui=reverse
+hi Cursor guifg=#000000 guibg=#ffffff
+
 
 command Clip call system('wl-copy', @0)
