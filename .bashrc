@@ -169,5 +169,9 @@ export PATH="~/project/software/wabt/build:$PATH" # wabt support
 
 export NODE_OPTIONS=" --dns-result-order=ipv4first "
 
-# uv
+# pip and uv
 export PATH="/home/tom/.local/bin:$PATH"
+export PATH="/home/tom/.nimble/bin:$PATH"
+
+source ~/project/software/emsdk/emsdk_env.sh
+
