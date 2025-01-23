@@ -131,7 +131,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'
-alias la='ls -A'
+alias la='ls --git -la --tree'
 alias l='ls --git -la --tree --git-ignore --no-permissions --no-user --no-time'
 
 alias count_files='count_files'
