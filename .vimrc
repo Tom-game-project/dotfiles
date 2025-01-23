@@ -35,9 +35,10 @@ else
 endif
 
 
-
 " 個人的に好きなカラースキーム
-colorscheme wildcharm
+" colorscheme wildcharm
+" colorscheme retrobox
+colorscheme habamax
 
 let showmarks_enable = 1
 " coc lsp manager
@@ -88,7 +89,7 @@ nmap <silent> <space>dfv :vs<CR><Plug>(coc-definition)
 
 nmap <space>e <Cmd>CocCommand explorer<CR>
 
-" エクスプローラを開く速度の改善 
+" エクスプローラを閉じる速度の改善 
 nmap <space>q <Cmd>CocCommand explorer<CR>
 
 let g:coc_explorer_global_presets = {
@@ -160,18 +161,18 @@ nnoremap <leader>] <C-i>
 
 
 " coc.nvim で Tab を補完決定に使う設定
-inoremap <silent><expr> <Tab>
-  \ pumvisible() ? "\<C-n>" :
-  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" :
-  \ CheckBackspace() ? "\<Tab>" :
-  \ coc#refresh()
-
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"inoremap <silent><expr> <Tab>
+"  \ pumvisible() ? "\<C-n>" :
+"  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" :
+"  \ CheckBackspace() ? "\<Tab>" :
+"  \ coc#refresh()
+"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+"function! CheckBackspace() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 " inoremap { {}<LEFT>
 " inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -193,6 +194,7 @@ endif
 " highlight Cursor guifg=NONE guibg=#808080 ctermbg=NONE
 " hi Cursor guifg=NONE guibg=NONE gui=reverse
 hi Cursor guifg=#000000 guibg=#ffffff
+
 
 
 command Clip call system('wl-copy', @0)
