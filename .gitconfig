@@ -6,6 +6,7 @@
 	st = status
 	graph-short = log --graph --all --pretty=format:\"%C(auto)%h %d %s %C(dim white)%an\"
 [credential]
+	helper = store --file /mnt/thumbdrive/.git-credentials
 	helper = cache --timeout=10800
 [core]
 	pager = delta

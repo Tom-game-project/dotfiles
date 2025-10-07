@@ -172,6 +172,12 @@ export NODE_OPTIONS=" --dns-result-order=ipv4first "
 # pip and uv
 export PATH="/home/tom/.local/bin:$PATH"
 export PATH="/home/tom/.nimble/bin:$PATH"
+# arduino
+export PATH="/home/tom/bin:$PATH"
+# cegcc for brain
+export PATH="/opt/cegcc/bin:$PATH"
 
-source ~/project/software/emsdk/emsdk_env.sh
+source /home/tom/export-esp.sh
+#source ~/project/software/emsdk/emsdk_env.sh
 
+eval "$(starship init bash)"

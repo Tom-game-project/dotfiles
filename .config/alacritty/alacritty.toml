@@ -1,0 +1,14 @@
+[window]
+# opacity = 0.2
+
+[keyboard]
+bindings = [
+    { key = "F11" , action = "ToggleFullscreen"},
+]
+
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+

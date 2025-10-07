@@ -2,6 +2,7 @@ set number
 syntax on
 set smartindent
 set cursorline
+"set cursorcolumn 落ち着かない
 set hlsearch
 set incsearch
 set smartcase
@@ -35,10 +36,18 @@ else
 endif
 
 
+" vimがguibgを見て判断してくれる
+" 必ずcolorschemeの前に置く
+set termguicolors 
+
 " 個人的に好きなカラースキーム
 " colorscheme wildcharm
 " colorscheme retrobox
-colorscheme habamax
+colorscheme sorbet
+" colorscheme habamax
+" colorscheme peachpuff
+" colorscheme zaibatsu
+highlight MatchParen cterm=bold ctermfg=white ctermbg=darkred guifg=#ffffff guibg=#aa42f5 gui=bold
 
 let showmarks_enable = 1
 " coc lsp manager
@@ -55,6 +64,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'airblade/vim-gitgutter'
 " https://github.com/kshenoy/vim-signature
 Plug 'kshenoy/vim-signature'
+
+" 非アクティブバッファーの色設定
+Plug 'levouh/tint.nvim'
 
 " icon
 " some settings needed
@@ -195,6 +207,18 @@ endif
 " hi Cursor guifg=NONE guibg=NONE gui=reverse
 hi Cursor guifg=#000000 guibg=#ffffff
 
+" 非アクティブウィンドウ用のハイライトグループを定義
+" guibgはGUI用の16進数カラーコード, ctermbgはCUI用の256色コード
+" highlight WindowInactive guibg=#00ff00
+" ctermbg=235
 
+" ウィンドウイベントに応じてwincolorを設定するautocmd
+" augroup DimInactive
+"   autocmd!
+"   " アクティブになったウィンドウではwincolorをリセット
+"   autocmd WinEnter,BufEnter * set wincolor=
+"   " 非アクティブになったウィンドウでwincolorを設定
+"   autocmd WinLeave,BufLeave * set wincolor=WindowInactive
+" augroup END
 
 command Clip call system('wl-copy', @0)
