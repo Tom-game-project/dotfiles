@@ -1,9 +1,11 @@
 [user]
-	name = Tom0427
+	name =  muranaka tomonari
 	email = 82128211+Tom-game-project@users.noreply.github.com
 [alias]
-	graph = log --decorate --graph --all --name-status
+	g = graph
+	gs = graph-short
 	st = status
+	graph = log --decorate --graph --all --name-status
 	graph-short = log --graph --all --pretty=format:\"%C(auto)%h %d %s %C(dim white)%an\"
 [credential]
 	helper = store --file /mnt/thumbdrive/.git-credentials
@@ -20,3 +22,5 @@
 	conflictStyle = zdiff3
 [sequence]
 	editor = vim
+[commit]
+	gpgsign = true

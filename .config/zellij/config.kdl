@@ -264,7 +264,7 @@ load_plugins {
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
-// default_shell "fish"
+default_shell "fish"
 
 // Choose the path to override cwd that zellij will use for opening new panes
 //
@@ -282,7 +282,7 @@ pane_frames false
 //   - true (default)
 //   - false
 //
-// auto_layout true
+auto_layout false
 
 // Whether sessions should be serialized to the cache folder (including their tabs/panes, cwds and running commands) so that they can later be resurrected
 // (Requires restart)
@@ -399,8 +399,8 @@ theme "gruvbox-dark"
 // that will be used by default if this option is not set.
 // Examples:
 //
-// copy_command "xclip -selection clipboard" // x11
-copy_command "wl-copy"                    // wayland
+copy_command "xclip -selection clipboard" // x11
+// copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 
 // Choose the destination for copied text
@@ -433,7 +433,7 @@ copy_command "wl-copy"                    // wayland
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 //
-// layout_dir "/path/to/my/layout_dir"
+// layout_dir "layouts"
 
 // The folder in which Zellij will look for themes
 // (Requires restart)
