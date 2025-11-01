@@ -5,7 +5,7 @@
 	g = graph
 	gs = graph-short
 	st = status
-	graph = log --decorate --graph --all --name-status
+	graph = log --decorate --graph --all --name-status  --show-signature
 	graph-short = log --graph --all --pretty=format:\"%C(auto)%h %d %s %C(dim white)%an\"
 [credential]
 	helper = store --file /mnt/thumbdrive/.git-credentials
