@@ -1,3 +1,11 @@
 [terminal]
 shell="fish"
+[mouse]
+
+hide_when_typing=true
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/monokai.toml"
+]
 

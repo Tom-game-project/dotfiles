@@ -43,10 +43,11 @@ set termguicolors
 " 個人的に好きなカラースキーム
 " colorscheme wildcharm
 " colorscheme retrobox
-colorscheme sorbet
+" colorscheme sorbet
 " colorscheme habamax
 " colorscheme peachpuff
 " colorscheme zaibatsu
+colorscheme unokai
 highlight MatchParen cterm=bold ctermfg=white ctermbg=darkred guifg=#ffffff guibg=#aa42f5 gui=bold
 
 let showmarks_enable = 1
@@ -56,7 +57,7 @@ let showmarks_enable = 1
 " https://github.com/junegunn/vim-plug?tab=readme-ov-file
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'mattn/vim-lsp-settings'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'

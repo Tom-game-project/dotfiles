@@ -24,3 +24,6 @@
 	editor = vim
 [commit]
 	gpgsign = true
+	verbose = true
+[init]
+	defaultBranch = master

@@ -1,3 +1,4 @@
 __pycache__/
+target/
 zellij_completion.log
 *.swp

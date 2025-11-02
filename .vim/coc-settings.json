@@ -27,5 +27,6 @@
 	    "typeParameter": "\uf278",
 	    "default": "\uf29c"
 	  },
-	"explorer.icon.enableNerdfont": true
+	"explorer.icon.enableNerdfont": true,
+	"explorer.file.showHiddenFiles": true
 }
