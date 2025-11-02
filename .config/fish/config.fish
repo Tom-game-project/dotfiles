@@ -3,5 +3,5 @@ if status is-interactive
 end
 source $HOME/.local/bin/env.fish
 alias ls="eza --icons --group-directories-first"
-alias lt="eza --icons --group-directories-first --tree --git-ignore"
+alias lt="eza --icons --group-directories-first --tree --git-ignore --all"
 starship init fish | source

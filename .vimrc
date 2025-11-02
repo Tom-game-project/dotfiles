@@ -203,7 +203,6 @@ nnoremap <leader>] <C-i>
 " inoremap [ []<LEFT>
 " inoremap [<Enter> []<Left><CR><ESC><S-o>
 
-
 " カーソルの設定
 if has('vim_starting')
     " 挿入モード時に非点滅の縦棒タイプのカーソル
@@ -231,4 +230,4 @@ hi Cursor guifg=#000000 guibg=#ffffff
 "   autocmd WinLeave,BufLeave * set wincolor=WindowInactive
 " augroup END
 
-command Clip call system('wl-copy', @0)
+command Clip call system('xclip -selection clipboard', @0)
