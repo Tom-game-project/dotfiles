@@ -1,6 +1,6 @@
 [user]
 	name =  muranaka tomonari
-	email = 82128211+Tom-game-project@users.noreply.github.com
+	email = tom.ipynb@gmail.com
 [alias]
 	g = graph
 	gs = graph-short
@@ -27,3 +27,5 @@
 	verbose = true
 [init]
 	defaultBranch = master
+[push]
+	useForceIfIncludes = false
