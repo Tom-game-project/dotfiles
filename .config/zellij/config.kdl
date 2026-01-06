@@ -342,10 +342,10 @@ auto_layout false
 // theme "catppuccin-macchiato"
 // theme "cyber-noir"
 // theme "blade-runner"
-// theme "retro-wave"
+theme "retro-wave"
 // theme "dracula"
 // theme "everforest-dark"
-theme "gruvbox-dark"
+// theme "gruvbox-dark"
 // theme "iceberg-dark"
 // theme "kanagawa"
 // theme "lucario"
@@ -420,7 +420,7 @@ copy_command "xclip -selection clipboard" // x11
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-// scrollback_editor "/usr/bin/vim"
+scrollback_editor "/usr/bin/vim"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
