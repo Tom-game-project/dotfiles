@@ -1,6 +1,25 @@
 set number
 syntax on
-set smartindent
+" set smartindent
+" タブ入力を複数のスペースに置き換える（最重要）
+set expandtab
+
+" 画面上でタブ文字が占める幅
+set tabstop=4
+
+" 自動インデントでずれる幅
+"set shiftwidth=4
+
+if has("autocmd")
+    "sw=shiftwidth, sts=softtabstop, ts=tabstop, et=expandtabの略
+    autocmd FileType cpp setlocal sw=2 sts=4 ts=4 et
+    autocmd FileType c setlocal sw=2 sts=4 ts=4 et
+endif
+
+" タブキーやバックスペースキーでカーソルが動く幅
+" (これを設定すると、スペース4つを1つのタブのように削除・移動できます)
+set softtabstop=4
+
 set cursorline
 "set cursorcolumn 落ち着かない
 set hlsearch

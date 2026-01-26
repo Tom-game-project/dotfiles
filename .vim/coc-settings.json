@@ -28,5 +28,14 @@
 	    "default": "\uf29c"
 	  },
 	"explorer.icon.enableNerdfont": true,
-	"explorer.file.showHiddenFiles": true
+  "explorer.file.showHiddenFiles": true,
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/21.1.0/clangd_21.1.0/bin/clangd",
+    "languageserver": {
+    "ocaml-lsp": {
+        "command": "opam",
+        "args": ["config", "exec", "--", "ocamllsp"],
+        "filetypes": ["ocaml", "reason"]
+      }
+  },
+  "rust-analyzer.cargo.allTargets": true
 }
