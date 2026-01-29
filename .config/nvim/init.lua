@@ -3,6 +3,12 @@
 -- ==========================================
 local opt = vim.opt
 
+-- 【重要】サインカラム（左端のアイコン列）の設定
+-- "yes" : 常に表示（無駄なスペース）
+-- "auto": アイコンがある時だけ表示（ガタガタする）
+-- "number": 行番号の場所にアイコンを重ねる（スペース消費ゼロ！）
+opt.signcolumn = "number" 
+
 -- 基本的な表示・動作設定
 opt.number = true        -- 行番号
 vim.cmd('syntax on')     -- シンタックスハイライト
@@ -42,6 +48,7 @@ vim.g.mapleader = " "
 -- ==========================================
 -- 2. 言語ごとの設定 (Autocmd)
 -- ==========================================
+
 -- C/C++ 用設定 (インデント2)
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "c", "cpp" },
@@ -109,12 +116,35 @@ require("lazy").setup({
         }
     },
 
-    -- [既存] その他のユーティリティ
-    "airblade/vim-gitgutter",
+    -- [新規] Gitの表示 (gitsigns.nvim)
+    -- vim-gitgutter は削除し、こちらに移行しました
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require('gitsigns').setup({
+                -- アイコン列（左端の列）は使わない
+                signcolumn = false,
+                
+                -- その代わり、行番号の色を変える
+                numhl = true, 
+                
+                -- 行内に行ハイライトを出したい場合はここをtrue（お好みで）
+                linehl = false,
+                
+                -- 変更箇所のプレビュー設定
+                current_line_blame = false, -- 行末に "誰がいつ変更したか" を出す機能（邪魔ならfalse）
+            })
+        end
+    },
+
+    -- [既存] マーカー表示
     "kshenoy/vim-signature",
+
+    -- [既存] アイコン
     "ryanoasis/vim-devicons",
 
-    -- 非アクティブウィンドウを暗くする
+    -- [既存] 非アクティブウィンドウを暗くする
     {
         "levouh/tint.nvim",
         config = function()
@@ -122,19 +152,26 @@ require("lazy").setup({
         end
     },
 
-    -- カラースキーム
+    -- [既存] カラースキーム
     {
         "owickstrom/vim-colors-paramount",
         lazy = false,
         priority = 1000,
         config = function()
             vim.cmd.colorscheme("paramount")
+            
             -- ハイライト微調整
             vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = "white", bg = "darkred" })
             vim.api.nvim_set_hl(0, "StatusLine", { link = "Comment" })
             vim.api.nvim_set_hl(0, "StatusLineNC", { link = "Comment" })
             vim.api.nvim_set_hl(0, "WinSeparator", { link = "Comment" })
             vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#ffffff" })
+
+            -- 【ここを追加！】行番号の色を変更するための定義
+            -- Add (追加): 緑系, Change (変更): 青系, Delete (削除): 赤系
+            vim.api.nvim_set_hl(0, "GitSignsAddNr", { fg = "#26a269", bold = true })
+            vim.api.nvim_set_hl(0, "GitSignsChangeNr", { fg = "#61afef", bold = true })
+            vim.api.nvim_set_hl(0, "GitSignsDeleteNr", { fg = "#e06c75", bold = true })
         end
     },
 })
