@@ -37,5 +37,6 @@
         "filetypes": ["ocaml", "reason"]
       }
   },
-  "rust-analyzer.cargo.allTargets": true
+  "rust-analyzer.cargo.allTargets": true,
+  "explorer.icon.source": "nvim-web-devicons"
 }

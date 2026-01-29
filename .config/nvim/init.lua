@@ -141,8 +141,11 @@ require("lazy").setup({
     -- [既存] マーカー表示
     "kshenoy/vim-signature",
 
-    -- [既存] アイコン
-    "ryanoasis/vim-devicons",
+    -- アイコン
+    {
+        "nvim-tree/nvim-web-devicons",
+        opts = {}
+    },
 
     -- [既存] 非アクティブウィンドウを暗くする
     {
@@ -162,16 +165,25 @@ require("lazy").setup({
             
             -- ハイライト微調整
             vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = "white", bg = "darkred" })
-            vim.api.nvim_set_hl(0, "StatusLine", { link = "Comment" })
-            vim.api.nvim_set_hl(0, "StatusLineNC", { link = "Comment" })
+            
+            -- 【変更】ステータスライン（下のファイル名が表示されるバー）を明るくする
+            -- fg（文字色）を白に、bg（背景）を少し明るいグレーに、bold（太字）を有効化
+            vim.api.nvim_set_hl(0, "StatusLine", { fg = "#ffffff", bg = "#222222" })
+            -- 非アクティブウィンドウのステータスラインは少し暗めにする
+            vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#ffffff", bg = "#111111" })
+            
             vim.api.nvim_set_hl(0, "WinSeparator", { link = "Comment" })
             vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#ffffff" })
 
-            -- 【ここを追加！】行番号の色を変更するための定義
-            -- Add (追加): 緑系, Change (変更): 青系, Delete (削除): 赤系
-            vim.api.nvim_set_hl(0, "GitSignsAddNr", { fg = "#26a269", bold = true })
-            vim.api.nvim_set_hl(0, "GitSignsChangeNr", { fg = "#61afef", bold = true })
-            vim.api.nvim_set_hl(0, "GitSignsDeleteNr", { fg = "#e06c75", bold = true })
+            -- GitSignsの行番号ハイライト定義
+            vim.api.nvim_set_hl(0, "GitSignsAddNr", { fg = "#26a269" })
+            vim.api.nvim_set_hl(0, "GitSignsChangeNr", { fg = "#61afef" })
+            vim.api.nvim_set_hl(0, "GitSignsDeleteNr", { fg = "#e06c75" })
+
+            -- 【ここを追加！】型ヒント（CocInlayHint）を落ち着かせる
+            -- fg を #555555 (暗めのグレー) にし、背景色(bg)を無し(NONE)にする
+            -- お好みで italic = true (斜体) をつけても「注釈感」が出て良いです
+            vim.api.nvim_set_hl(0, "CocInlayHint", { fg = "#016991", bg = "NONE", italic = true })
         end
     },
 })
