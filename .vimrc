@@ -55,19 +55,6 @@ else
 endif
 
 
-" vimがguibgを見て判断してくれる
-" 必ずcolorschemeの前に置く
-set termguicolors 
-
-" 個人的に好きなカラースキーム
-" colorscheme wildcharm
-" colorscheme retrobox
-" colorscheme sorbet
-" colorscheme habamax
-" colorscheme peachpuff
-" colorscheme zaibatsu
-colorscheme unokai
-highlight MatchParen cterm=bold ctermfg=white ctermbg=darkred guifg=#ffffff guibg=#aa42f5 gui=bold
 
 let showmarks_enable = 1
 " coc lsp manager
@@ -91,7 +78,25 @@ Plug 'levouh/tint.nvim'
 " icon
 " some settings needed
 Plug 'ryanoasis/vim-devicons'
+Plug 'owickstrom/vim-colors-paramount'
 call plug#end()
+
+
+" vimがguibgを見て判断してくれる
+" 必ずcolorschemeの前に置く
+set termguicolors 
+
+" 個人的に好きなカラースキーム
+" colorscheme wildcharm
+" colorscheme retrobox
+" colorscheme sorbet
+" colorscheme habamax
+" colorscheme peachpuff
+" colorscheme zaibatsu
+" colorscheme unokai
+set background=dark
+colorscheme paramount
+highlight MatchParen cterm=bold ctermfg=white ctermbg=darkred guifg=#ffffff guibg=#aa42f5 gui=bold
 
 
 " autocomplete
