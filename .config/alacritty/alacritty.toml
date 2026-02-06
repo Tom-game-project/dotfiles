@@ -1,5 +1,6 @@
 [terminal]
 shell="fish"
+
 [mouse]
 
 hide_when_typing=true
@@ -12,3 +13,7 @@ import = [
     "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
 ]
 
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"

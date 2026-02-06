@@ -47,3 +47,5 @@ ls --git -la --tree --git-ignore --no-permissions --no-user --no-time
 ### .bashrc
 
 - zellij completion
+
+## dependences

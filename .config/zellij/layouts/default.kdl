@@ -2,6 +2,7 @@ layout {
     default_tab_template {
         children
         pane size=1 /*borderless=true*/ {
+            /* https://github.com/Tom-game-project/little-bar */
             plugin location="file:~/.config/zellij/plugins/little-bar.wasm" {
             }
         }

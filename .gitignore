@@ -2,3 +2,14 @@ __pycache__/
 target/
 zellij_completion.log
 *.swp
+
+# dotfiles/.gitignore
+
+# GPGの秘密情報は絶対に無視する
+# そもそもディレクトリごとシンボリックリンクしないでください
+gnupg/private-keys-v1.d/
+gnupg/*.gpg
+gnupg/random_seed
+*.kbx
+S.gpg-agent*
+

@@ -7,6 +7,8 @@ end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    set -gx GPG_TTY (tty)
+    gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
 end
 source $HOME/.local/bin/env.fish
 alias ls="eza --icons --group-directories-first"
@@ -25,6 +27,6 @@ end
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '/home/tom/.opam/opam-init/init.fish' && source '/home/tom/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
 
