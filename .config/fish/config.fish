@@ -22,6 +22,16 @@ if test -f ~/.profile
     fenv source ~/.profile
 end
 
+# Zellij環境下でのみ環境変数を設定する
+if set -q ZELLIJ
+    # zellij上でvim, nvimを開いた際に、黒い帯状の模様が見えてしまう問題の解決
+    # "tmux-256color" など、問題が解決した環境変数の値を指定してください
+    set -gx TERM "screen-256color"
+    
+    # もし COLORTERM で解決した場合はこちら
+    # set -gx COLORTERM "truecolor"
+end
+
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH

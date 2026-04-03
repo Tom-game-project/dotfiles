@@ -333,7 +333,7 @@ auto_layout false
 // theme "default"
 
 
-// theme "ansi"
+theme "ansi"
 // theme "ao"
 // theme "atelier-sulphurpool"
 // theme "ayu_mirage"
@@ -342,7 +342,7 @@ auto_layout false
 // theme "catppuccin-macchiato"
 // theme "cyber-noir"
 // theme "blade-runner"
-theme "retro-wave"
+// theme "retro-wave"
 // theme "dracula"
 // theme "everforest-dark"
 // theme "gruvbox-dark"

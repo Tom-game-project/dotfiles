@@ -49,6 +49,13 @@ vim.g.mapleader = " "
 -- 2. 言語ごとの設定 (Autocmd)
 -- ==========================================
 
+-- .tpp 拡張子を "cpp" のファイルタイプとしてNeovimに教える
+vim.filetype.add({
+    extension = {
+        tpp = "cpp",
+    },
+})
+
 -- C/C++ 用設定 (インデント2)
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "c", "cpp" },
@@ -73,6 +80,17 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Gleam 用設定 (インデント2)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "gleam" },
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
+})
+
 -- ==========================================
 -- 3. プラグイン管理 (lazy.nvim)
 -- ==========================================
@@ -86,7 +104,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- [既存] Coc.nvim (C/C++等のLSP & 補完)
+    -- [1] Coc.nvim
     {
         "neoclide/coc.nvim",
         branch = "release",
@@ -98,56 +116,80 @@ require("lazy").setup({
         end
     },
 
-    -- [新規] Lean.nvim (Lean4専用設定)
-    -- ネイティブLSPを使用するためCocとは独立して動きます
+    -- [2] Lean.nvim
     {
         'Julian/lean.nvim',
         event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
         dependencies = {
             'neovim/nvim-lspconfig',
             'nvim-lua/plenary.nvim',
-            -- 'hrsh7th/nvim-cmp', -- ※将来的に補完を強化したい場合はこれが必要になります
         },
         opts = {
-            -- インフォビュー（証明状態）の自動表示を有効化
             infoview = { autoopen = true },
-            -- デフォルトのキーマッピングを有効化 (<Leader>i でInfoview切替など)
             mappings = true,
         }
     },
 
-    -- [新規] Gitの表示 (gitsigns.nvim)
-    -- vim-gitgutter は削除し、こちらに移行しました
+    -- [3] Nvim-lspconfig (Gleam等)
     {
-        "lewis6991/gitsigns.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        "neovim/nvim-lspconfig",
         config = function()
-            require('gitsigns').setup({
-                -- アイコン列（左端の列）は使わない
-                signcolumn = false,
-                
-                -- その代わり、行番号の色を変える
-                numhl = true, 
-                
-                -- 行内に行ハイライトを出したい場合はここをtrue（お好みで）
-                linehl = false,
-                
-                -- 変更箇所のプレビュー設定
-                current_line_blame = false, -- 行末に "誰がいつ変更したか" を出す機能（邪魔ならfalse）
-            })
+            vim.lsp.enable("gleam")
         end
     },
 
-    -- [既存] マーカー表示
+    -- [4] ⭐️ 修正済: nvim-treesitter
+    -- require() を直接書かず、lazy.nvim の opts に委譲して安全にロードする
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     branch = "master",
+    --     build = ":TSUpdate",
+    --     -- event = { "BufReadPost", "BufNewFile" }, -- 起動速度を上げるならコメントアウトを外す
+    --     main = "nvim-treesitter.configs", -- lazy.nvim が自動的に require("nvim-treesitter.configs").setup(opts) を実行する
+    --     opts = {
+    --         ensure_installed = { "gleam", "c", "lua", "vim", "vimdoc", "query", "rust", "python", "javascript" }, -- 使用言語を追加しました
+    --         highlight = {
+    --             enable = true,
+    --             additional_vim_regex_highlighting = false,
+    --         },
+    --     },
+    -- },
+{
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  config = function()
+    -- 👇 ❌ 旧: "nvim-treesitter.configs"
+    -- 👇 ✅ 新: "nvim-treesitter.config" (末尾の 's' を削除)
+    require("nvim-treesitter.config").setup({
+      ensure_installed = { "gleam", "c", "lua", "vim", "vimdoc", "query" },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+    })
+  end,
+},
+
+    -- [5] gitsigns.nvim
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            signcolumn = false,
+            numhl = true,
+            linehl = false,
+            current_line_blame = false,
+        }
+    },
+
+    -- [6] その他のプラグイン
     "kshenoy/vim-signature",
 
-    -- アイコン
     {
         "nvim-tree/nvim-web-devicons",
         opts = {}
     },
 
-    -- [既存] 非アクティブウィンドウを暗くする
     {
         "levouh/tint.nvim",
         config = function()
@@ -155,38 +197,32 @@ require("lazy").setup({
         end
     },
 
-    -- [既存] カラースキーム
+    -- [7] カラースキーム
     {
         "owickstrom/vim-colors-paramount",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme("paramount")
+            vim.cmd.colorscheme("unokai")
             
-            -- ハイライト微調整
             vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = "white", bg = "darkred" })
-            
-            -- 【変更】ステータスライン（下のファイル名が表示されるバー）を明るくする
-            -- fg（文字色）を白に、bg（背景）を少し明るいグレーに、bold（太字）を有効化
             vim.api.nvim_set_hl(0, "StatusLine", { fg = "#ffffff", bg = "#222222" })
-            -- 非アクティブウィンドウのステータスラインは少し暗めにする
             vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#ffffff", bg = "#111111" })
-            
             vim.api.nvim_set_hl(0, "WinSeparator", { link = "Comment" })
             vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#ffffff" })
 
-            -- GitSignsの行番号ハイライト定義
             vim.api.nvim_set_hl(0, "GitSignsAddNr", { fg = "#26a269" })
             vim.api.nvim_set_hl(0, "GitSignsChangeNr", { fg = "#61afef" })
             vim.api.nvim_set_hl(0, "GitSignsDeleteNr", { fg = "#e06c75" })
 
-            -- 【ここを追加！】型ヒント（CocInlayHint）を落ち着かせる
-            -- fg を #555555 (暗めのグレー) にし、背景色(bg)を無し(NONE)にする
-            -- お好みで italic = true (斜体) をつけても「注釈感」が出て良いです
             vim.api.nvim_set_hl(0, "CocInlayHint", { fg = "#016991", bg = "NONE", italic = true })
         end
     },
 })
+
+
+
+
 
 -- ==========================================
 -- 4. WebDevIcons 設定
@@ -255,3 +291,50 @@ vim.g.coc_explorer_global_presets = {
     simplify = { ["file-child-template"] = "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]" },
     buffer = { sources = { { name = "buffer", expand = true } } },
 }
+
+-- ==========================================
+-- 6. Lean (Native LSP) 用のキーマッピング同期設定
+-- ==========================================
+-- Native LSP (lean.nvim) がアタッチされた時だけ、Cocと同じキーバインドを適用する
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        -- バッファローカルな設定にするためのオプション
+        local opts = { buffer = args.buf, silent = true }
+        local map = vim.keymap.set
+
+        -- ホバー表示 (<leader>h)
+        map("n", "<leader>h", vim.lsp.buf.hover, opts)
+
+        -- 定義ジャンプ (<leader>df)
+        map("n", "<leader>df", vim.lsp.buf.definition, opts)
+
+        -- 参照先一覧 (<leader>rf)
+        map("n", "<leader>rf", vim.lsp.buf.references, opts)
+
+        -- リネーム (<leader>rn)
+        map("n", "<leader>rn", vim.lsp.buf.rename, opts)
+
+        -- フォーマット (<leader>fmt)
+        map("n", "<leader>fmt", vim.lsp.buf.format, opts)
+
+        -- 定義を分割ウィンドウで開く (<leader>dfs / <leader>dfv)
+        -- Native LSPには直接の機能がないため、コマンドを組み合わせます
+        map("n", "<leader>dfs", function()
+            vim.cmd("split")
+            vim.lsp.buf.definition()
+        end, opts)
+
+        map("n", "<leader>dfv", function()
+            vim.cmd("vsplit")
+            vim.lsp.buf.definition()
+        end, opts)
+    end,
+})
+
+-- Gleamファイルを開いたときに、自動でTree-sitterを起動する
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gleam",
+  callback = function()
+    vim.treesitter.start()
+  end,
+})

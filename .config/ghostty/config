@@ -77,6 +77,9 @@ mouse-hide-while-typing = true
 keybind = f11=toggle_fullscreen
 keybind = ctrl+shift+comma=reload_config
 
+
+theme = Sakura
 # OpenGLレンダラーのバグを回避するため、ソフトウェアレンダリングを強制する
-# custom-shader = ~/.config/ghostty/shaders/test.glsl
+# custom-shader = ~/.config/ghostty/shaders/ghostty-shaders/in-game-crt.glsl
+custom-shader = ~/.config/ghostty/shaders/ghostty-shaders/bettercrt.glsl
 keybind = f5=reload_config
